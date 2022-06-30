@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/drawable/ic_baseline_perm_identity_24.xml" value="0.2205" />
+        <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/drawable/ic_close_white_24dp.xml" value="0.1575" />
+        <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/drawable/ic_signal_wifi_off_white_24dp.xml" value="0.1575" />
+        <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/drawable/selector_confitm_login_rounded.xml" value="0.1575" />
+        <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/drawable/shape_login_edittext.xml" value="0.1575" />
+        <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/layout/activity_home.xml" value="0.33" />
+        <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/layout/activity_login.xml" value="0.2" />
+        <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/layout/activity_user.xml" value="0.1641337386018237" />
+        <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/layout/dialog_loading.xml" value="0.1641337386018237" />
+        <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/layout/dialog_updater.xml" value="0.1641337386018237" />
+        <entry key="..\:/Users/Hadi/.gradle/caches/transforms-3/02060d96b3e0953f1088a5edb0fb28b6/transformed/jetified-AndroidInstagram-0.1/res/layout/activity_main.xml" value="0.1641337386018237" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

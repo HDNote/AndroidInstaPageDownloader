@@ -1,0 +1,82 @@
+plugins {
+    id 'com.android.application'
+    id 'com.chaquo.python'
+}
+
+android {
+    compileSdk 32
+
+    defaultConfig {
+        applicationId "hadi.greencode.instapagedownloader"
+        minSdk 16
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+        vectorDrawables.useSupportLibrary true
+        setProperty("archivesBaseName", "InstaPageDownloader_v" + versionName + "_" + new Date().format('yyyy-MM-dd HH.mm'))
+        configurations.all {
+            resolutionStrategy {
+                force 'androidx.appcompat:appcompat:1.4.2'
+                force 'com.google.android.material:material:1.6.1'
+                force 'androidx.constraintlayout:constraintlayout:2.1.4'
+            }
+        }
+
+        ndk {
+            abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
+        }
+
+        sourceSets{
+            main{
+                python.srcDir "src/main/python"
+            }
+        }
+
+        python {
+            buildPython "C:/Users/Hadi/AppData/Local/Programs/Python/Python38-32/python.exe"
+            pip {
+                install "instaloader"
+            }
+            pyc {
+                src false
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.12.1'
+    implementation 'com.squareup.okhttp3:okhttp:3.12.1'
+    implementation 'com.squareup.okio:okio:2.2.2'
+    implementation 'com.jakewharton:butterknife:10.1.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'com.airbnb.android:lottie:3.1.0'
+//    implementation 'com.nshmura:recyclertablayout:1.5.0'
+    implementation 'com.github.Binary-Finery:Bungee:2.0'
+    implementation 'com.github.bumptech.glide:glide:4.13.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.13.0'
+    implementation files('libs/calligraphy-2.2.0.aar')
+//    implementation 'com.mindorks.android:prdownloader:0.6.0'
+}
