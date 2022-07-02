@@ -5,7 +5,6 @@ import instaloader
 username = 'hadi.notes'
 to_pagination = 2
 loader = instaloader.Instaloader(compress_json=False,  max_connection_attempts=1, request_timeout=300.0, download_pictures= False,download_videos=False)
-loader.login('hadi.notes', '09383890149pp')
 profile = instaloader.Profile.from_username(loader.context, username)
 
 per_page        = 7
