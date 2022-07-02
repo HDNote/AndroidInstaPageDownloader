@@ -3,17 +3,36 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/drawable/ic_baseline_arrow_circle_down_white_40.xml" value="0.251" />
+        <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/drawable/ic_baseline_image_24.xml" value="0.251" />
+        <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/drawable/ic_baseline_people_white_24.xml" value="0.2205" />
         <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/drawable/ic_baseline_perm_identity_24.xml" value="0.2205" />
+        <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/drawable/ic_close_warm.xml" value="0.1575" />
         <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/drawable/ic_close_white_24dp.xml" value="0.1575" />
+        <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/drawable/ic_pause_white_24dp.xml" value="0.1575" />
+        <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/drawable/ic_play_arrow_white_24dp.xml" value="0.181" />
+        <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/drawable/ic_play_arrow_white_30dp.xml" value="0.1775" />
         <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/drawable/ic_signal_wifi_off_white_24dp.xml" value="0.1575" />
+        <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/drawable/selector_confitm_genres_rounded.xml" value="0.1575" />
         <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/drawable/selector_confitm_login_rounded.xml" value="0.1575" />
+        <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/drawable/selector_download_circle.xml" value="0.181" />
+        <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/drawable/selector_find_user_rounded_orange.xml" value="0.1575" />
+        <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/drawable/selector_logout_red_round.xml" value="0.1575" />
         <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/drawable/shape_login_edittext.xml" value="0.1575" />
-        <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/layout/activity_home.xml" value="0.33" />
+        <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/drawable/shape_rounded_notif_gray.xml" value="0.1575" />
+        <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/drawable/shape_rounded_notif_red_holo.xml" value="0.1575" />
+        <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/drawable/shape_rounded_white_dlog.xml" value="0.1575" />
+        <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/drawable/shape_white_genres_search_rounded.xml" value="0.1575" />
+        <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/drawable/side_nav_bar.xml" value="0.1575" />
+        <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/layout/activity_home.xml" value="0.25" />
         <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/layout/activity_user.xml" value="0.1641337386018237" />
+        <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/layout/dialog_ask.xml" value="0.31851851851851853" />
+        <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/layout/dialog_downloader.xml" value="0.31851851851851853" />
         <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/layout/dialog_loading.xml" value="0.1641337386018237" />
-        <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/layout/dialog_updater.xml" value="0.1641337386018237" />
+        <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/layout/dialog_updater.xml" value="0.33" />
+        <entry key="..\:/Developer/Android/Workplace/InstaPageDownloader/app/src/main/res/layout/recycler_media.xml" value="0.7587822014051522" />
         <entry key="..\:/Users/Hadi/.gradle/caches/transforms-3/02060d96b3e0953f1088a5edb0fb28b6/transformed/jetified-AndroidInstagram-0.1/res/layout/activity_main.xml" value="0.1641337386018237" />
       </map>
     </option>

@@ -1,11 +1,15 @@
-from collections import ChainMap, OrderedDict
+from collections import OrderedDict
 import json
 import instaloader
-import sys
+
+
+def getInstaloader():
+    return instaloader.Instaloader(compress_json=False,  max_connection_attempts=1,
+    request_timeout=300.0, download_pictures= False,download_videos=False)
 
 def loginUserAndPassword(username, password):
     try:
-        L = instaloader.Instaloader()
+        L = getInstaloader()
         L.login(username, password)
         L.save_session_to_file()
         return '{"code":200,"status":"Success"}'
@@ -28,95 +32,80 @@ def loginUserAndPassword(username, password):
 
 
 
+def getProfileByUsername(loged_username, username, to_pagination):
+    try:
+        loader = getInstaloader()
+        loader.load_session_from_file(loged_username)
+        profile = instaloader.Profile.from_username(loader.context, username)
+        
+        per_page        = 12
+        to_pagination   *= per_page
+        from_pagination = to_pagination - per_page
+
+        posts           = profile.get_posts()
+        new_post_list   = list(range(0))
+        parent_object   = OrderedDict()
+
+        profile_object   = OrderedDict()
+        profile_object["profile_pic_url"]           = str(profile.get_profile_pic_url())
+        profile_object["full_name"]                 = str(profile.full_name)
+        profile_object["followers"]                 = profile.followers
+        profile_object["followees"]                 = profile.followees
+        profile_object["post_count"]                = posts.count
+        profile_object["is_private"]                = profile.is_private
+        profile_object["biography"]                 = str(profile.biography)
+        profile_object["followed_by_viewer"]        = profile.followed_by_viewer
+
+        for index, post in enumerate(posts):
+            if(from_pagination <= index and to_pagination > index):
+                new_post                         = OrderedDict()
+                new_post["image"]                = str(post.url)
+                new_post["comments_count"]       = post.comments
+                new_post["caption"]              = str(post.caption)
+                new_post["likes"]                = post.likes
+                new_post["shortcode"]            = str(post.shortcode)
+                new_post["video_view_count"]     = post.video_view_count
+                new_post["video_duration"]       = str(post.video_duration)
+                new_post["is_video"]             = post.is_video
+                new_post["pcaption"]             = str(post.pcaption)
+                new_post["profile"]              = str(post.profile)
+                new_post["video_url"]            = str(post.video_url)
+
+                new_images_list   = list(range(0))
+                
+                try:
+                    images            = post._node["edge_sidecar_to_children"]['edges']
+                    if(len(images) > 1):
+                        for image in images:
+                            images_model               = OrderedDict()
+                            images_model["image_url"]  = image['node']['display_url']
+                            images_model["is_video"]   = image['node']['is_video']
+                            if(image['node']['is_video']):
+                                images_model["video_url"]   = image['node']['video_url']
+                            
+                            new_images_list.append(images_model)
+                except BaseException:
+                    print("edge_sidecar_to_children")
+
+                new_post["images"]       = new_images_list
+                new_post_list.append(new_post)
+
+            elif (to_pagination < index):     
+                break
 
 
+        parent_object["code"]    = 200
+        parent_object["status"]  = "success"
+        parent_object["profile"] = profile_object
+        parent_object["posts"]   = new_post_list
 
+        return json.dumps(parent_object)
 
-def getFeeds(username):
-    loader = instaloader.Instaloader()
-    loader.load_session_from_file(username)
-    # s = loader.download_feed_posts(max_count=20, fast_update=True, post_filter=lambda post: post.viewer_has_liked)
-    # L = loader.get_feed_posts()
-    profile = instaloader.Profile.from_username(loader.context, username)
-    # profile = instaloader.load_structure(loader.context, 'Post')
-    # profile = instaloader.load_structure(loader.context, {instaloader.Post, instaloader.Profile, instaloader.StoryItem})
+    except instaloader.exceptions.ProfileNotExistsException:
+        return '{"code":404,"status":"Profile doesnt exist!"}'
 
-    
+    except instaloader.exceptions.ConnectionException:
+        return '{"code":403,"status":"Change your ip by turning off the Mobile Data"}'
 
-    posts = profile.get_posts()
-
-
-    for post in posts:
-        print(post)
-    
-    # for item in profile:
-        # return item
-
-    # try:
-    #     print(s)
-
-    # except instaloader.exceptions.LoginRequiredException:
-    #     print('{"code":400,"status":"LoginRequired"}')
-
-    # except BaseException as err:
-    #     print('{"code":400,"status":"Unexpected Error: ' + str(err) + '"}')
-
-
-
-
-def getProfileByUsername(username):
-    loader = instaloader.Instaloader()
-    # loader.load_session_from_file(username)
-    loader.login(username, '09383890149ppp')
-    profile = instaloader.Profile.from_username(loader.context, username)
-
-    profile_pic_url = profile.get_profile_pic_url()
-
-    posts           = profile.get_posts()
-    new_post_list   = list(range(posts.count))
-    parent_object   = OrderedDict()
-    newPost         = OrderedDict()
-
-    for post in posts:
-        newPost["image"]                = str(post.url)
-        newPost["comments_count"]       = post.comments
-        newPost["caption"]              = str(post.caption)
-        newPost["likes"]                = post.likes
-        newPost["shortcode"]            = str(post.shortcode)
-        newPost["video_view_count"]     = post.video_view_count
-        newPost["video_duration"]       = str(post.video_duration)
-        newPost["caption_mentions"]     = post.caption_mentions
-        newPost["is_video"]             = post.is_video
-        newPost["pcaption"]             = str( post.pcaption)
-        newPost["profile"]              = str(post.profile)
-        newPost["video_url"]            = str(post.video_url)
-        # newPost["comments"]           = post.get_comments()
-        # newPost["_full_metadata"]           = post._full_metadata
-        # newPost["_node"]                    = post._node
-        new_post_list.append(newPost)
-
-
-    parent_object["profile_pic_url"] = profile_pic_url
-    parent_object["posts"]           = new_post_list
-
-    return json.dumps(parent_object)
-
-
-
-        # x = post.replace("<Post ", "")
-        # x = post.replace(">", "")
-        # json += '{"post_url": "https://www.instagram.com/p/' + x + '/?__a=1"},'
-        # print(post.url)
-    # json += ']'
-
-    # for item in profile:
-        # return item
-
-    # try:
-    #     print(s)
-
-    # except instaloader.exceptions.LoginRequiredException:
-    #     print('{"code":400,"status":"LoginRequired"}')
-
-    # except BaseException as err:
-    #     print('{"code":400,"status":"Unexpected Error: ' + str(err) + '"}')
+    except BaseException as err:
+        return '{"code":400,"status":"Unexpected Error"}'

@@ -13,8 +13,3 @@
 .externalNativeBuild
 .cxx
 local.properties
-/app/src/main/python/interpreter.py
-/app/src/main/python/test.py
-/app/src/main/python/w.py
-/app/src/main/python/go.py
-/app/src/main/python/h.py

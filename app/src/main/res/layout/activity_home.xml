@@ -1,32 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     android:fitsSystemWindows="true">
-
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/etUsername"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="48dp"
-        android:layout_marginRight="40dp"
+        android:layout_margin="15dp"
         android:background="@drawable/shape_login_edittext"
+        android:gravity="left|center"
         android:hint="Username"
+        android:maxLines="1"
         android:paddingLeft="15dp"
+        android:singleLine="true"
         android:textAppearance="@android:style/TextAppearance.Small"
         android:textColor="@android:color/black"
         android:textColorHint="@color/materialGray500"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="@id/btFind"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btFind"
         android:layout_width="60dp"
-        android:layout_height="47dp"
-        android:background="@drawable/selector_confitm_login_rounded"
+        android:layout_height="48dp"
+        android:layout_margin="15dp"
+        android:background="@drawable/selector_find_user_rounded_orange"
+        android:gravity="center"
         android:text="ّFind"
+        android:textColor="@android:color/white"
+        app:layout_constraintRight_toLeftOf="@id/btLogout"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btLogout"
+        android:layout_width="60dp"
+        android:layout_height="48dp"
+        android:layout_margin="15dp"
+        android:background="@drawable/selector_logout_red_round"
+        android:drawableTop="@drawable/ic_baseline_people_white_24"
+        android:gravity="center"
+        android:src="@drawable/ic_baseline_people_white_24"
+        android:text="Logout"
+        android:textAllCaps="false"
+        android:textAppearance="@android:style/TextAppearance.Small"
         android:textColor="@android:color/white"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -41,18 +64,181 @@
             android:id="@+id/civUser"
             android:layout_width="96dp"
             android:layout_height="96dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
             android:src="@drawable/ic_baseline_perm_identity_24"
             app:civ_border_color="#FF000000"
             app:civ_border_width="2dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvPostCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginBottom="20dp"
+            android:text="0"
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:textColor="@color/materialGray900"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/civUser"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintLeft_toRightOf="@id/civUser"
+            app:layout_constraintRight_toLeftOf="@id/tvFollowers"
+            app:layout_constraintTop_toTopOf="@id/civUser"
+            tools:text="80" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvNotePostCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="POSTS"
+            android:textAppearance="@android:style/TextAppearance.Small"
+            android:textColor="@color/materialGray600"
+            app:layout_constraintLeft_toLeftOf="@id/tvPostCount"
+            app:layout_constraintRight_toRightOf="@id/tvPostCount"
+            app:layout_constraintTop_toBottomOf="@id/tvPostCount" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvFollowers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="0"
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:textColor="@color/materialGray900"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/civUser"
+            app:layout_constraintLeft_toRightOf="@id/tvPostCount"
+            app:layout_constraintRight_toLeftOf="@id/tvFollowing"
+            app:layout_constraintTop_toTopOf="@id/civUser"
+            tools:text="12K" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FOLLOWER"
+            android:textAppearance="@android:style/TextAppearance.Small"
+            android:textColor="@color/materialGray600"
+            app:layout_constraintLeft_toLeftOf="@id/tvFollowers"
+            app:layout_constraintRight_toRightOf="@id/tvFollowers"
+            app:layout_constraintTop_toBottomOf="@id/tvFollowers" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvFollowing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="20dp"
+            android:text="0"
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:textColor="@color/materialGray900"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/civUser"
+            app:layout_constraintLeft_toRightOf="@id/tvFollowers"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/civUser"
+            tools:text="5K" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FOLLOW"
+            android:textAppearance="@android:style/TextAppearance.Small"
+            android:textColor="@color/materialGray600"
+            app:layout_constraintLeft_toLeftOf="@id/tvFollowing"
+            app:layout_constraintRight_toRightOf="@id/tvFollowing"
+            app:layout_constraintTop_toBottomOf="@id/tvFollowing" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvIsPrivate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:layout_marginTop="30dp"
+            android:paddingLeft="10dp"
+            android:gravity="center"
+            android:textAppearance="@android:style/TextAppearance.Small"
+            android:textColor="@color/materialGreen"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/tvFollowing"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/civUser"
+            tools:text="Public Account" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:textAppearance="@android:style/TextAppearance.Medium"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/civUser"
+            tools:text="USERNAME: instagram" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvFullName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="10dp"
+            android:textAppearance="@android:style/TextAppearance.Medium"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvUsername"
+            tools:text="FULL NAME: COW" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvBiography"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textAppearance="@android:style/TextAppearance.Small"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvFullName"
+            tools:text="Biography: blah blah blah" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcMedia"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintBottom_toTopOf="@id/pbLoadMedia"
+            app:layout_constraintTop_toBottomOf="@id/tvBiography" />
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/pbLoadMedia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/civUser" />
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rcMedia"
+            tools:visibility="visible" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/ibDownloadSelectedImages"
+            android:layout_width="60dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_height="60dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:background="@drawable/selector_download_circle"
+            app:srcCompat="@drawable/ic_baseline_arrow_circle_down_white_40" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

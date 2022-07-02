@@ -37,22 +37,32 @@ android {
             pip {
                 install "instaloader"
             }
-            pyc {
-                src false
-            }
         }
     }
 
     buildTypes {
         release {
-            minifyEnabled true
-            shrinkResources true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
         }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+    signingConfigs {
+        debug {
+            storeFile file('C:\\Developer\\Android\\KeyStore\\HDNote_Key mmmmnnnn.jks')
+            storePassword 'mmmmnnnn'
+            keyAlias 'hd note'
+            keyPassword 'mmmmnnnn'
+        }
     }
 }
 
@@ -70,13 +80,13 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:3.12.1'
     implementation 'com.squareup.okio:okio:2.2.2'
     implementation 'com.jakewharton:butterknife:10.1.0'
+    implementation project(path: ':prdownloader')
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.airbnb.android:lottie:3.1.0'
-//    implementation 'com.nshmura:recyclertablayout:1.5.0'
     implementation 'com.github.Binary-Finery:Bungee:2.0'
     implementation 'com.github.bumptech.glide:glide:4.13.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.13.0'
-    implementation files('libs/calligraphy-2.2.0.aar')
-//    implementation 'com.mindorks.android:prdownloader:0.6.0'
+    implementation 'io.github.inflationx:calligraphy3:3.1.1'
+    implementation 'io.github.inflationx:viewpump:2.0.3'
 }

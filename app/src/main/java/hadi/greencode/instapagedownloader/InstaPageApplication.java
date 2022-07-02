@@ -10,15 +10,19 @@ import androidx.multidex.MultiDex;
 
 import com.chaquo.python.Python;
 import com.chaquo.python.android.AndroidPlatform;
+import com.downloader.PRDownloader;
+import com.downloader.PRDownloaderConfig;
 
 import java.io.File;
 import java.text.DecimalFormat;
 
-import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
+import io.github.inflationx.calligraphy3.CalligraphyConfig;
+import io.github.inflationx.calligraphy3.CalligraphyInterceptor;
+import io.github.inflationx.viewpump.ViewPump;
 
 public class InstaPageApplication extends Application {
 
-    public static final String        APP_DIR      = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Filmy/";
+    public static final String        APP_DIR      = Environment.getExternalStorageDirectory().getAbsolutePath() + "/InstaPageDownloader/";
     public static final String        APP_PICS_DIR = APP_DIR + "Pictures";
     public static       DecimalFormat formatter    = new DecimalFormat("#,###,###");
     private static      Typeface      boldIransans;
@@ -37,8 +41,6 @@ public class InstaPageApplication extends Application {
         lightIransans = Typeface.createFromAsset(getAssets(), "fonts/IRANSans-Mobile-Light.ttf");
         boldIransans  = Typeface.createFromAsset(getAssets(), "fonts/IRANSans-Bold.ttf");
         initFont();
-        initDevMetrics();
-        initLeakCanary();
         initDownloader();
         initPython();
         setupFolders();
@@ -55,30 +57,21 @@ public class InstaPageApplication extends Application {
     }
 
     private void initFont() {
-        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                .setDefaultFontPath("fonts/IRANSans-Mobile.ttf")
-//                .setFontAttrId(R.attr.fontPath)
-                .build()
-        );
-    }
-
-    private void initLeakCanary() {
-//        if (LeakCanary.isInAnalyzerProcess(this)) {
-//            return;
-//        }
-//        LeakCanary.install(this);
-    }
-
-    private void initDevMetrics() {
-        if (BuildConfig.DEBUG) {
-//            AndroidDevMetrics.initWith(this);
-        }
+        ViewPump.init(ViewPump.builder()
+                .addInterceptor(new CalligraphyInterceptor(
+                        new CalligraphyConfig.Builder()
+                                .setDefaultFontPath("fonts/IRANSans-Mobile.ttf")
+                                .setFontAttrId(io.github.inflationx.calligraphy3.R.attr.fontPath)
+                                .build()))
+                .build());
     }
 
     private void initDownloader() {
-//        PRDownloader.initialize(getApplicationContext(), PRDownloaderConfig.newBuilder()
-//                .setDatabaseEnabled(true)
-//                .build());
+        PRDownloader.initialize(getApplicationContext(), PRDownloaderConfig.newBuilder()
+                .setDatabaseEnabled(true)
+                .setReadTimeout(30_000)
+                .setConnectTimeout(30_000)
+                .build());
     }
 
     public DecimalFormat getFormatter() {
